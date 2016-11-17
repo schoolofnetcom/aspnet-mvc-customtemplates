@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.Pessoa
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <img src="~/Content/img/foto.png" width="80px" height="80px" alt="Sem foto" />
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Nome)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.DataNascimento)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo})
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,7 @@
+﻿@model bool?
+
+@Html.DropDownList(string.Empty, new List<SelectListItem> {
+    new SelectListItem { Text = "Selecione", Value = string.Empty, Selected = !Model.HasValue },
+    new SelectListItem { Text = "Sim", Value = "true", Selected = Model.HasValue && Model.Value },
+    new SelectListItem { Text = "Não", Value = "false", Selected = Model.HasValue && !Model.Value }
+}, ViewData)

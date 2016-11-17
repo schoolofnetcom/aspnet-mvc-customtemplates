@@ -1,0 +1,39 @@
+﻿@model DateTime?
+
+@{
+    List<SelectListItem> dias = new List<SelectListItem>();
+    for (int i = 1; i <= 31; i++)
+    {
+        dias.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+    }
+
+    List<SelectListItem> meses = new List<SelectListItem>();
+    for (int i = 1; i <= 12; i++)
+    {
+        meses.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+    }
+
+    int prevYearCount = 150;
+
+    if (ViewBag.Intervalo != null)
+    {
+        prevYearCount = ViewBag.Intervalo; 
+    }
+    
+    List<SelectListItem> anos = new List<SelectListItem>();
+    for (int i = DateTime.Now.Year - prevYearCount; i <= DateTime.Now.Year; i++)
+    {
+        anos.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+    }
+
+    if (Model.HasValue && Model.Value != DateTime.MinValue)
+    {
+        dias.Where(d => d.Value == Model.Value.Day.ToString()).FirstOrDefault().Selected = true;
+        meses.Where(m => m.Value == Model.Value.Month.ToString()).FirstOrDefault().Selected = true;
+        anos.Where(a => a.Value == Model.Value.Year.ToString()).FirstOrDefault().Selected = true;
+    }
+}
+
+@Html.DropDownList("days", dias)
+@Html.DropDownList("months", meses)
+@Html.DropDownList("years", anos)

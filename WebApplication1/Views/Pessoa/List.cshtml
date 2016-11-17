@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication1.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Listagem de Pessoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <br />
+    <br />
+
+@foreach (var item in Model)
+{
+    @*var manipulado = Html.Partial("_PessoaPartialView", item);
+    string div = "<div style='background-color: Red'>{0}</div>";
+    
+    MvcHtmlString result = new MvcHtmlString(string.Format(div, manipulado)); 
+    
+    @result;*@
+    
+    //@Html.Partial("_PessoaPartialView", item)
+    { Html.RenderPartial("_PessoaPartialView", item); }
+    <br />
+}
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿@model bool?
+
+@{
+    string result = ":(";
+    if(Model.HasValue)
+    {
+        result = Model.Value ? ":)" : ":(";
+    }
+}
+
+<strong>@result</strong>
